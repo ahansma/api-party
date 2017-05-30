@@ -1,23 +1,41 @@
 import React, { Component } from 'react'
-//import './GithubUser.css'
-import  { Route } from 'react-router-dom'
+import  './GithubUser.css'
 
 class GithubUser extends Component {
-    constructor(props) {
-        super(props)
-        this.fetchUserData()
-    }
+    state = {
+      user: { 
+        avatar_url: '',
+        login: '',
+        followers: '',
+        following: '',
+        location: '',
+        html_url: '',
+     }
+    }
+    constructor(props) {
+        super(props)
+        this.fetchUserData()
+    }
 
-    fetchUserData = () => {
-        fetch(`https://api.github.com/users/username${this.props.match.params.username}`)
-            .then(response => response.json())
-            .then(user =>  console.log(user))
+    fetchUserData = () => {
+        fetch(`https://api.github.com/users/${this.props.match.params.username}`)
+        .then(response => response.json())
+        .then(user => this.setState({ user }))
+    }
 
-    }
-
-    render() {
-        return <h1>USER: {this.props.match.params.username}</h1>
-    }
+    render() {
+        const { user } = this.state
+        return (
+        <div className="github-user">
+            <img src={user.avatar_url} alt="" />
+            <h2>{user.login}</h2>
+            <h3>followers: {user.followers}</h3>
+            <h3>following: {user.following}</h3>
+            <h3>location: {user.location}</h3>
+            <a href={user.html_url} target="_">Link to {user.login}'s profile </a>
+            </div>
+        )
+    }
 }
 
 export default GithubUser
