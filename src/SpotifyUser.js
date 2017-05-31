@@ -6,7 +6,7 @@ class SpotifyUser extends Component {
       user: { 
         display_name: '',
         followers: '',
-        external_url: ''
+        external_urls: ''
      }
     }
 
@@ -16,7 +16,7 @@ class SpotifyUser extends Component {
   }
 
   fetchUserData = (props) => {
-    fetch(`https://api.spotify.com/v1/me/${props.match.params.user}`)
+    fetch(`https://api.spotify.com/v1/users/${props.match.params.user}`)
       .then(response => response.json())
       .then(user => this.setState({ user }))
   }
@@ -32,9 +32,10 @@ class SpotifyUser extends Component {
     const { user } = this.state
     return (
       <div className="spotify-user">
-            <h2>{user.display_name}</h2>
-            <h3>followers: {user.followers}</h3>
-            <a href={user.external_url} target="_">Link to {user.display_name}'s profile </a>
+            <h2>{user.id}</h2>
+            <h3>name: {user.display_name}</h3>
+.            <h3>followers: {user.followers}</h3>
+            <a href={user.external_url} target="_">Link to {user.id}'s profile </a>
             </div>
     )
   }
