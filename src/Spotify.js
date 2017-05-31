@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import  { Route } from 'react-router-dom'
 import SpotifyUser from './SpotifyUser.js'
+import './Spotify.css'
 
 
 class Spotify extends Component {
@@ -21,7 +22,7 @@ class Spotify extends Component {
     render() {
         return (
             <div className="spotify">
-                <img className="github-logo" src="http://kpcbweb2.s3.amazonaws.com/companies/329/logo/original/Spotify.jpg?1364424490" alt="spotify" />
+                <img className="spotify-logo" src="http://kpcbweb2.s3.amazonaws.com/companies/329/logo/original/Spotify.jpg?1364424490" alt="spotify" />
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input 

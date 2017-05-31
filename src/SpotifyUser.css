@@ -1,0 +1,8 @@
+.spotify-user img {
+    border-radius: 50%;
+    height:200px;
+}
+
+.spotify-user h3 {
+    color: #999;
+}
