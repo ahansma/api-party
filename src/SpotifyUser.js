@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import  './GithubUser.css'
 
-class GithubUser extends Component {
+class SpotifyUser extends Component {
     state = {
       user: { 
-        avatar_url: '',
-        login: '',
-        followers: '',
-        following: '',
-        location: '',
-        html_url: '',
+        
      }
     }
     constructor(props) {
@@ -18,7 +12,7 @@ class GithubUser extends Component {
     }
 
     fetchUserData = (props) => {
-        fetch(`https://api.github.com/users/${this.props.match.params.username}`)
+        fetch(`https://api.spotify.com/v1/me/${this.props.match.params.username}`)
         .then(response => response.json())
         .then(user => this.setState({ user }))
     }
@@ -33,8 +27,7 @@ class GithubUser extends Component {
     render() {
         const { user } = this.state
         return (
-        <div className="github-user">
-            <img src={user.avatar_url} alt="" />
+        <div className="spotify-user">
             <h2>{user.login}</h2>
             <h3>followers: {user.followers}</h3>
             <h3>following: {user.following}</h3>
@@ -45,4 +38,4 @@ class GithubUser extends Component {
     }
 }
 
-export default GithubUser
+export default SpotifyUser
